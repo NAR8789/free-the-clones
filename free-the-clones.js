@@ -32,11 +32,18 @@ new Vue({
      */
   },
   computed: {
-    board: function() {
-      return _.zip.apply(_,
-        _.zip.apply(_, this.pebbles).
-          map(col => col.filter(sq => typeof sq === 'boolean' ))
+    squaresWithLocations: function() {
+      return this.pebbles.map(
+        (diag, i) => diag.map(
+          (hasPebble, j) => ({ location: [i,j], pebble: hasPebble })
+        )
       )
+    },
+    board: function() {
+      return _.zip(
+        ..._.zip(...this.squaresWithLocations).
+          map(col => _.compact(col))
+      ).map(row => _.compact(row))
       // it's a little weird that this works... in brief, if we look at the pebbles array as a representation
       // of a standard square grid everything stays in the same column but gets bottom-aligned. (each column
       // gets padded from above with undefined spaces, until the triangle sits in the lower left corner instead
@@ -44,13 +51,21 @@ new Vue({
       //
       // So, we can "fix" this into something displayable by truncating the undefined spaces from above. intuitively,
       // we want `pebbles.transpose.map(?.compact).transpose`, but...
-      // - instead of `?.transpose` we use `_.zip.apply(_, ?)`
-      // - instead of `?.compact` we use `?.filter(...blah...)` (there is a `_.compact`, but this removes all falsey)
+      // - instead of `?.transpose` we use `_.zip(...?)`
+      // - instead of `?.compact` we use `_.compact(?)`
+      // - we compact one more time at the end, because the last zip adds trailing undefineds
     }
   },
   methods: {
     clonePebble: function(i, j) {
-
+      while (i >= this.pebbles.length) {
+        this.pebbles.push(new Array(this.pebbles.length + 2).fill(false))
+      }
+      if (!this.pebbles[i, j]) { return }
+      if (this.pebbles[i+1, j] || this.pebbles[i, j+1]) { return }
+      this.pebbles[i  , j  ] = false
+      this.pebbles[i+1, j  ] = true
+      this.pebbles[i  , j+1] = true
     }
   }
 })

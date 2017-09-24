@@ -4,7 +4,10 @@
 
 <div id="free-the-clones">
   <div v-for="row in board">
-    <span v-for="square in row" class="fa" v-bind:class="{ 'fa-times': square}"/>
+    <span
+      v-for="square in row"
+      class="fa" v-bind:class="{ 'fa-times': square.pebble }"
+    />
   </div>
 </div>
 <script src="free-the-clones.js"></script>
