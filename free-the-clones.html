@@ -1,0 +1,10 @@
+<script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash/lodash.js"></script>
+<script src="https://use.fontawesome.com/5177094ba7.js"></script>
+
+<div id="free-the-clones">
+  <div v-for="row in board">
+    <span v-for="square in row" class="fa" v-bind:class="{ 'fa-times': square}"/>
+  </div>
+</div>
+<script src="free-the-clones.js"></script>
