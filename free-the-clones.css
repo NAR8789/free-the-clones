@@ -1,0 +1,7 @@
+.square {
+  color: transparent;
+}
+
+.square.pebble {
+  color: red;
+}
