@@ -58,14 +58,18 @@ new Vue({
   },
   methods: {
     clonePebble: function(i, j) {
-      while (i >= this.pebbles.length) {
-        this.pebbles.push(new Array(this.pebbles.length + 2).fill(false))
+      console.log('clonePebble', i, j, this.pebbles.length)
+      while (i + 1 >= this.pebbles.length) {
+        console.log('expanding pebbles')
+        this.pebbles.push(new Array(this.pebbles.length + 1).fill(false))
       }
-      if (!this.pebbles[i, j]) { return }
-      if (this.pebbles[i+1, j] || this.pebbles[i, j+1]) { return }
-      this.pebbles[i  , j  ] = false
-      this.pebbles[i+1, j  ] = true
-      this.pebbles[i  , j+1] = true
+      if (!this.pebbles[i][j]) { return }
+      if (this.pebbles[i+1][j] || this.pebbles[i+1][j+1]) { return }
+      console.log('actually cloning pebble', i, j)
+      this.pebbles[i  ].splice(j  , 1, false)
+      this.pebbles[i+1].splice(j  , 1, true)
+      this.pebbles[i+1].splice(j+1, 1, true)
+      this.pebbles = this.pebbles
     }
   }
 })
