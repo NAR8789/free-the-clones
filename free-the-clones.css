@@ -1,5 +1,10 @@
 .square {
   color: transparent;
+  border: 1px solid lightgray;
+  overflow: hidden;
+  height: 1em;
+  width: 1em;
+  text-align: center;
 }
 
 .square.pebble {
