@@ -1,10 +1,15 @@
 .square {
   color: transparent;
   border: 1px solid lightgray;
-  overflow: hidden;
+  font-size: 200%;
   height: 1em;
   width: 1em;
   text-align: center;
+
+  /* usually provided by `fa` class */
+  display: inline-block;
+  line-height: 1em;
+  font-family: FontAwesome;
 }
 
 .square.pebble.clonable {
