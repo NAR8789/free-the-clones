@@ -1,8 +1,8 @@
 new Vue({
   el: '#free-the-clones',
   data: {
-    pebbles: [[true, true],
-              [true]]
+    pebbles: [[true, true ],
+              [true, false]]
     // true for pebble, false for no pebble
   },
   computed: {
@@ -24,6 +24,7 @@ new Vue({
 
       this.ensureSpace(i  , j+1)
       this.ensureSpace(i+1, j  )
+      this.ensureSpace(i+1, j+1) // hack for double borders fix
 
       this.setPebble(i  ,j  , false)
       this.setPebble(i+1,j  , true)

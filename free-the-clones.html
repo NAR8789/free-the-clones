@@ -4,7 +4,7 @@
 </head>
 <body>
 <div id="free-the-clones">
-  <div v-for="row in board">
+  <div v-for="row in board" class="row">
     <span
       v-for="square in row"
       class="square fa-circle" v-bind:class="{ pebble: square.pebble, clonable: square.clonable }"
