@@ -10,3 +10,7 @@
 .square.pebble {
   color: red;
 }
+
+.square.pebble.blocked {
+  color: rgba(255, 0, 0, 0.5);
+}

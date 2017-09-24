@@ -12,7 +12,7 @@ new Vue({
           (hasPebble, j) => ({
             location: [i,j],
             pebble: hasPebble,
-            clonable: this.clonable(i, j),
+            blocked: !this.clonable(i, j),
           })
         )
       )
