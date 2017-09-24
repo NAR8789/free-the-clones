@@ -9,24 +9,37 @@ new Vue({
     board: function() {
       return this.pebbles.map(
         (row, i) => row.map(
-          (hasPebble, j) => ({ location: [i,j], pebble: hasPebble })
+          (hasPebble, j) => ({
+            location: [i,j],
+            pebble: hasPebble,
+            clonable: this.clonable(i, j),
+          })
         )
       )
     },
   },
   methods: {
     clonePebble: function(i, j) {
-      if (!this.pebbles[i][j]) { return }
+      if (!this.clonable(i, j)) { return }
 
       this.ensureSpace(i  , j+1)
       this.ensureSpace(i+1, j  )
 
-      if (this.pebbles[i][j+1] || this.pebbles[i+1][j]) { return }
-
-      this.pebbles[i  ].splice(j  , 1, false)
-      this.pebbles[i+1].splice(j  , 1, true)
-      this.pebbles[i  ].splice(j+1, 1, true)
-      this.pebbles = this.pebbles
+      this.setPebble(i  ,j  , false)
+      this.setPebble(i+1,j  , true)
+      this.setPebble(i  ,j+1, true)
+    },
+    setPebble: function(i, j, hasPebble) {
+      this.pebbles[i].splice(j, 1, hasPebble)
+      // workaround for vue not picking up updates to nested arrays
+    },
+    hasPebble: function(i, j) {
+      return this.pebbles[i] && this.pebbles[i][j]
+    },
+    clonable: function(i, j) {
+      return this.hasPebble(i,j) &&
+        !this.hasPebble(i  , j+1) &&
+        !this.hasPebble(i+1, j  )
     },
     ensureSpace: function(i, j) {
       while(i >= this.pebbles.length) { this.pebbles.push([]) }
