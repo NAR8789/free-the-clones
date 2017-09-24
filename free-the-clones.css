@@ -7,10 +7,10 @@
   text-align: center;
 }
 
-.square.pebble {
+.square.pebble.clonable {
   color: red;
 }
 
-.square.pebble.blocked {
+.square.pebble {
   color: rgba(255, 0, 0, 0.5);
 }

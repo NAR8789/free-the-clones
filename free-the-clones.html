@@ -7,7 +7,7 @@
   <div v-for="row in board">
     <span
       v-for="square in row"
-      class="square fa fa-circle" v-bind:class="{ pebble: square.pebble, blocked: square.blocked }"
+      class="square fa fa-circle" v-bind:class="{ pebble: square.pebble, clonable: square.clonable }"
       v-on:click="clonePebble(...square.location)"
     />
   </div>
