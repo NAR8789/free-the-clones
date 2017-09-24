@@ -15,10 +15,6 @@ new Vue({
     },
   },
   methods: {
-    ensureSpace: function(i, j) {
-      while(i >= this.pebbles.length) { this.pebbles.push([]) }
-      while(j >= this.pebbles[i].length) { this.pebbles[i].push(false) }
-    },
     clonePebble: function(i, j) {
       if (!this.pebbles[i][j]) { return }
 
@@ -31,6 +27,10 @@ new Vue({
       this.pebbles[i+1].splice(j  , 1, true)
       this.pebbles[i  ].splice(j+1, 1, true)
       this.pebbles = this.pebbles
-    }
+    },
+    ensureSpace: function(i, j) {
+      while(i >= this.pebbles.length) { this.pebbles.push([]) }
+      while(j >= this.pebbles[i].length) { this.pebbles[i].push(false) }
+    },
   }
 })
