@@ -1,0 +1,28 @@
+{
+  "name": "free-the-clones",
+  "version": "0.0.0",
+  "description": "Xiao is a crazy person",
+  "main": "free-the-clones.js",
+  "scripts": {
+    "test": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NAR8789/free-the-clones.git"
+  },
+  "keywords": [
+    "free",
+    "the",
+    "clones"
+  ],
+  "author": "NAR8789@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NAR8789/free-the-clones/issues"
+  },
+  "homepage": "https://github.com/NAR8789/free-the-clones",
+  "dependencies": {
+    "vue": "^2.4.4",
+    "webpack": "^3.6.0"
+  }
+}

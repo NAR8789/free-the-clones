@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 new Vue({
   el: '#free-the-clones',
   data: {
